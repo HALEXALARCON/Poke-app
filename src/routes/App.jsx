@@ -5,6 +5,7 @@ import Protected from "./Protected";
 import MainLayout from "../layout/MainLayout";
 import Details from "../app/details/Details";
 
+
 function App() {
   return (
     <Routes>
