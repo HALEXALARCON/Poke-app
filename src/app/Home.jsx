@@ -1,7 +1,7 @@
-// Home.jsx
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import dynamaxBattle from "../assets/dynamax-battle.mp4";
+import pokebola from "../assets/pokebola.png"; // Asegúrate de que la ruta sea correcta
 
 function Home() {
   const [trainerName, setTrainerName] = useState("");
@@ -9,7 +9,6 @@ function Home() {
   const navigate = useNavigate();
   const videoRef = useRef(null);
 
-  // Al cargar, buscar el nombre en sessionStorage
   useEffect(() => {
     const storedName = sessionStorage.getItem("trainerName");
     if (storedName) {
@@ -18,10 +17,8 @@ function Home() {
     }
   }, []);
 
-  // Configurar la velocidad de reproducción del video
   useEffect(() => {
     if (videoRef.current) {
-      // Establece la velocidad de reproducción a 0.5x para reproducir más despacio
       videoRef.current.playbackRate = 0.5;
     }
   }, []);
@@ -46,7 +43,6 @@ function Home() {
 
   return (
     <div className="relative w-full h-screen flex flex-col justify-center items-center">
-      {/* Video de fondo con velocidad reducida */}
       <video
         ref={videoRef}
         autoPlay
@@ -60,15 +56,11 @@ function Home() {
       </video>
 
       {/* Contenido principal */}
-      <div className="relative text-center mb-8">
-        <h1 className="text-5xl font-bold mb-4 text-white drop-shadow-lg">
-          POKÉDEX
-        </h1>
+      <div className="relative text-center mb-8 z-10">
+        <h1 className="text-5xl font-bold mb-4 text-white drop-shadow-lg">POKÉDEX</h1>
         {isReturningTrainer ? (
           <>
-            <h2 className="text-2xl font-medium text-red-700 mb-4">
-              Welcome back, {trainerName}!
-            </h2>
+            <h2 className="text-2xl font-medium text-red-700 mb-4">Welcome back, {trainerName}!</h2>
             <p className="text-cyan-950 font-semibold mb-4">
               Do you want to continue or start as a new coach?
             </p>
@@ -81,22 +73,16 @@ function Home() {
                   onChange={handleInputChange}
                   className="input"
                 />
-                <button onClick={handleNewTrainer} className="btn">
-                  New Trainer
-                </button>
+                <button onClick={handleNewTrainer} className="btn">New Trainer</button>
               </div>
               <div className="flex justify-center">
-                <button onClick={handleReturnTrainer} className="btn btn-rounded">
-                  Continue
-                </button>
+                <button onClick={handleReturnTrainer} className="btn btn-rounded">Continue</button>
               </div>
             </div>
           </>
         ) : (
           <>
-            <h2 className="text-2xl font-medium text-red-700 mb-4">
-              Hello Trainer!
-            </h2>
+            <h2 className="text-2xl font-medium text-red-700 mb-4">Hello Trainer!</h2>
             <p className="text-cyan-950 font-semibold mb-4">
               To access the Pokédex, please enter your name:
             </p>
@@ -108,15 +94,21 @@ function Home() {
                 onChange={handleInputChange}
                 className="input"
               />
-              <button onClick={handleNewTrainer} className="btn">
-                Get into
-              </button>
+              <button onClick={handleNewTrainer} className="btn">Get into</button>
             </div>
           </>
         )}
       </div>
+
+      {/* Fondo inferior con pokebola */}
       <div className="absolute left-0 bottom-0 w-full">
-        <div className="bg-red-600 w-full h-20"></div>
+        <div className="relative bg-red-600 w-full h-20">
+          <img
+            src={pokebola}
+            alt="Pokebola"
+            className="absolute left-1/2 transform -translate-x-1/2 bottom-[-40px] w-24 h-24"
+          />
+        </div>
         <div className="bg-black w-full h-12"></div>
       </div>
     </div>
