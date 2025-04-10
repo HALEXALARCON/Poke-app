@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../app/Home";
-import Pokedex from "../app/pokedex/pokedex";
 import Protected from "./Protected";
 import MainLayout from "../layout/MainLayout";
 import Details from "../app/details/Details";
+import Pokedex from "../app/pokedex/pokedex";
 
 
 function App() {
