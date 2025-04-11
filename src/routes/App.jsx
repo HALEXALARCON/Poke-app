@@ -3,7 +3,7 @@ import Home from "../app/Home";
 import Protected from "./Protected";
 import MainLayout from "../layout/MainLayout";
 import Details from "../app/details/Details";
-import Pokedex from "../app/pokedex/pokedex";
+import Pokedex from "../app/pokedex/Pokedex";
 
 
 function App() {
